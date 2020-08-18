@@ -4,4 +4,3 @@ print("Tran Van Hung")
 print("Hello, World!")
 print("Hello, World again!")
 print("Hello, World again!")
->>>>>>> master
