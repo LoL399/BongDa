@@ -1,1 +1,2 @@
-print("Hello, Yud!")
+print("Việt Nam Vô Địch")
+print("Võ Thành Duy")
