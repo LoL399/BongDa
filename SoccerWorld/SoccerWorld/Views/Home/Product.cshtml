@@ -1,0 +1,84 @@
+﻿
+@{
+    ViewBag.Title = "Product";
+}
+@if (Session["UserName"] == null)
+{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+else if (Session["UserName"] != null)
+{
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<h2>Product</h2>
+
+<div class="shoptop mt-4 mb-4">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Trang Chủ</a></li>
+            <li class="breadcrumb-item"><a href="shop.html">Shop</a></li>
+            <li class="breadcrumb-item"><a href="ao-bong-da.html">Áo Bóng Đá</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Chi Tiết Áo Bóng Đá</li>
+        </ol>
+    </nav>
+</div>
+<div class="row">
+    <div class="col-12 col-sm-7 chi-tiet-san-pham">
+        <img src="images/Ao-argentina-san-khach-1-300x300.jpg" alt="">
+        <ul class="nav nav-tabs mt-5" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <a class="nav-link active" id="mota-tab" data-toggle="tab" href="#mota" role="tab" aria-controls="mota" aria-selected="true">Mô tả</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" id="thongtin-tab" data-toggle="tab" href="#thongtin" role="tab" aria-controls="thongtin" aria-selected="false">Thông tin bổ sung</a>
+            </li>
+
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="mota" role="tabpanel" aria-labelledby="mota-tab">...</div>
+            <div class="tab-pane fade" id="thongtin" role="tabpanel" aria-labelledby="thongtin-tab">...</div>
+
+        </div>
+    </div>
+
+    <div class="col-12 col-sm-5">
+        <div class="h5">
+            ÁO ĐỘI TUYỂN ARGENTINA
+        </div>
+        <form class="form-inline mb-5">
+            <label for="size">Size</label>
+            <select class="form-control ml-2" id="size">
+                <option>Chọn Size Áo</option>
+                <option>S</option>
+                <option>M</option>
+                <option>L</option>
+                <option>XL</option>
+                <option>XXL</option>
+
+            </select>
+
+        </form>
+        <p style="color: red; display: inline;"> Giá Tiền : </p> <span class="giasanpham" style="color: red;"> 100000</span>
+        <div class="btn btn-primary w-100 mt-5 mb-5">HOTLINE  090000000</div>
+        <ul style="list-style-type: disc;">
+            <li><a href="payment-guide.html" class="text-dark"> hướng dẫn thanh toán </a></li>
+            <li> <a href="ordering-guide.html" class="text-dark"> hướng dẫn mua hàng </a></li>
+            <li><a href="ship-guide.html" class="text-dark"> hướng dẫn giao nhận </a></li>
+            <li><a href="exchange-guide.html" class="text-dark"> hướng dẫn đổi trả </a></li>
+
+        </ul>
+        <div class="footer-icon">
+            <a href="https://www.facebook.com/" class="fb">
+                <div class="circle"><i class="fab fa-facebook-f"></i></div>
+            </a>
+            <a href="https://www.instagram.com/" class="ins">
+                <div class="circle"><i class="fab fa-instagram"></i></div>
+            </a>
+            <a href="" class="callphone">
+                <div class="circle"><i class="fas fa-phone"></i></div>
+            </a>
+        </div>
+
+
+    </div>

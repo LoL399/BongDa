@@ -1,0 +1,970 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@if (Session["UserName"] == null)
+{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+else if (Session["UserName"] != null)
+{
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<div class="slide">
+    <div id="carouselExampleControls" class="carousel slide carousel-fade h-75" data-ride="carousel"
+         data-interval="3000">
+        <div class="carousel-inner">
+            <div class="carousel-item">
+                <a href="">
+                    <img src="images/Untitled-1.png" class="d-block w-100 " alt="...">
+                </a>
+            </div>
+            <div class="carousel-item">
+                <a href="">
+                    <img src="images/Untitled-2.png" class="d-block w-100 " alt="...">
+                </a>
+            </div>
+            <div class="carousel-item active">
+                <a href="chi-tiet-san-pham.html">
+                    <img src="https://shopbongda.vn/wp-content/uploads/2020/03/banner-website-NEMEZIZ-MESSI-1500x500-1.png"
+                         class="d-block w-100" alt="...">
+                </a>
+            </div>
+            <div class="carousel-item">
+                <a href="chi-tiet-san-pham.html">
+                    <img src="images/banner-website-shopbongda-Nike-CR7-xanh-lơ-3.png" class="d-block w-100"
+                         alt="...">
+                </a>
+            </div>
+
+            <div class="carousel-item">
+                <a href="chi-tiet-san-pham.html">
+                    <img src="https://shopbongda.vn/wp-content/uploads/2020/03/banner-website-NEMEZIZ-MESSI-XANH-DẠ-QUANG-1500x500-1.png"
+                         class="d-block w-100" alt="...">
+                </a>
+            </div>
+            <div class="carousel-item">
+                <a href="chi-tiet-san-pham.html">
+                    <img src="https://shopbongda.vn/wp-content/uploads/2020/03/banner-website-NEMEZIZ-MESSI-XANH-DẠ-QUANG-1500x500-1.png"
+                         class="d-block w-100" alt="...">
+                </a>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+    <!-- hinh trong silde -->
+    <!-- thong bao -->
+    <div class="notification">
+        <div class="note">
+            <div class="notice">
+                <div class="notice-img-icon">
+                    <img src="images/shipping-white.png" alt="ship">
+                </div>
+                <div class="notice-title">
+                    <h5>FREE SHIP TOÀN QUỐC</h5>
+                    <h6>Miễn phí giao hàng tận nhà trên toàn quốc cho tất cả các khách hàng</h6>
+                </div>
+            </div>
+            <div class="notice">
+                <div class="notice-img-icon">
+                    <img src="images/doi-tra-white.png" alt="ship">
+                </div>
+                <div class="notice-title">
+                    <h5>BẢO HÀNH 3 THÁNG</h5>
+                    <h6>Quý khách được bảo hành đổi mẫu mới 100% nếu bị lỗi trong vòng 90 ngày.</h6>
+
+                </div>
+            </div>
+            <div class="notice">
+                <div class="notice-img-icon">
+                    <img src="images/original-white.png" alt="ship">
+                </div>
+                <div class="notice-title">
+                    <h5>CHẤT LƯỢNG 100%</h5>
+                    <h6>Cam kết chất lượng 100% của các sản phẩm</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- thong bao -->
+</div>
+<!-- silde end -->
+<!-- container start -->
+<div class="container container-fluid">
+    <!-- san pham ban chay  -->
+    <div class="fields">
+        <button type="button" class="btn btn-info">Những Sản Phẩm Bán Chạy</button>
+    </div>
+    <!-- san pham ban chay  -->
+    <!-- cac san pham ban chay -->
+    <div class="pic-product">
+
+        <div class="owl-carousel owl-theme  ">
+            <div class="item">
+                <a href="chi-tiet-san-pham.html">
+                    <img src="images/adidas1.jpg"
+                         alt="">
+                </a>
+                <div class="buynow">
+                    <a href="">thêm vào giỏ</a>
+                </div>
+                <div class="like">
+                    <a href="#">
+                        <i class="fas fa-heart" title="yêu thích"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="item">
+                <a href="chi-tiet-san-pham.html">
+                    <img src="images/adidas2.jpg"
+                         alt="">
+                </a>
+                <div class="buynow">
+                    <a href="">thêm vào giỏ</a>
+                </div>
+                <div class="like">
+                    <a href="#">
+                        <i class="fas fa-heart" title="yêu thích"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="item">
+                <a href="chi-tiet-san-pham.html">
+                    <img src="images/nike3.jpg"
+                         alt="">
+                </a>
+                <div class="buynow">
+                    <a href="">thêm vào giỏ</a>
+                </div>
+                <div class="like">
+                    <a href="#">
+                        <i class="fas fa-heart" title="yêu thích"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="item">
+                <a href="chi-tiet-san-pham.html">
+                    <img src="images/nike4.jpg"
+                         alt="">
+                </a>
+                <div class="buynow">
+                    <a href="">thêm vào giỏ</a>
+                </div>
+                <div class="like">
+                    <a href="#">
+                        <i class="fas fa-heart" title="yêu thích"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="item ">
+                <a href="chi-tiet-san-pham.html">
+                    <img src="images/Ao-brazil-san-nha-1-300x300.jpg"
+                         alt="">
+                </a>
+                <div class="buynow">
+                    <a href="">thêm vào giỏ</a>
+                </div>
+                <div class="like">
+                    <a href="#">
+                        <i class="fas fa-heart" title="yêu thích"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="item ">
+                <a href="chi-tiet-san-pham.html">
+                    <img src="images/Ao-atletico-san-nha-1.jpg"
+                         alt="">
+                </a>
+                <div class="buynow">
+                    <a href="">thêm vào giỏ</a>
+                </div>
+                <div class="like">
+                    <a href="#">
+                        <i class="fas fa-heart" title="yêu thích"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="item ">
+                <a href="chi-tiet-san-pham.html">
+                    <img src="images/Ao-duc-san-nha-1.jpg"
+                         alt="">
+                </a>
+                <div class="buynow">
+                    <a href="#">thêm vào giỏ</a>
+                </div>
+                <div class="like">
+                    <a href="#">
+                        <i class="fas fa-heart" title="yêu thích"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div><!-- cac san pham ban chay  -->
+    <!-- san pham giay bong da  -->
+    <div class="fields">
+        <a href="giay-bong-da.html">
+            <button type="button" class="btn btn-danger">Giày Bóng Đá</button>
+        </a>
+    </div>
+    <!-- san pham giay bong da -->
+    <div class="row text-transform">
+        <!-- khung hinh giay bong da -->
+        <div class="piccard col-sm-3 col-6 mb-4">
+            <div class="card card-index">
+                <div class="pic">
+                    <a href="chi-tiet-san-pham.html">
+                        <img src="images/giay-bong-da-chinh-hang-thanh-hung-futsal-nike-mercurial-vapor-13-pro-niat8004414tf-1-600x600.jpg"
+                             class="card-img-top" alt="hinh">
+                        <div class="buy">
+                            <a href="#"><i class="fas fa-shopping-cart"></i> &nbsp; <span>Add to Cart</span> </a>
+                        </div>
+                        <div class="love">
+                            <a href="#">
+                                <i class="fas fa-heart" title="yêu thích"></i>
+                            </a>
+                        </div>
+                    </a>
+                </div>
+                <div class="card-body">
+                    <div class="card-text">NIKE MERCURIAL VAPOR 13 PRO TF – AT8004-414 – XANH/ TRẮNG</div>
+                    <div class="price"><a href="">500000 &#8363;</a></div>
+                </div>
+
+            </div>
+        </div>
+        <div class="piccard col-sm-3 col-6 mb-4">
+            <div class="card card-index">
+                <div class="pic">
+                    <a href="chi-tiet-san-pham.html">
+                        <img src="images/nike1.jpg"
+                             class="card-img-top" alt="hinh">
+                        <div class="buy">
+                            <a href="#"><i class="fas fa-shopping-cart"></i> &nbsp; <span>Add to Cart</span></a>
+                        </div>
+                        <div class="love">
+                            <a href="#">
+                                <i class="fas fa-heart" title="yêu thích"></i>
+                            </a>
+                        </div>
+                    </a>
+                </div>
+                <div class="card-body">
+                    <div class="card-text">NIKE LUNAR GATO II – 580456-070 – ĐEN XÁM/ XANH</div>
+                    <div class="price"><a href="">500000 &#8363;</a></div>
+                </div>
+
+            </div>
+        </div>
+        <div class="piccard col-sm-3 col-6 mb-4">
+            <div class="card card-index">
+                <div class="pic">
+                    <a href="chi-tiet-san-pham.html">
+                        <img src="images/nike2.jpg"
+                             class="card-img-top" alt="hinh">
+                        <div class="buy">
+                            <a href="#"><i class="fas fa-shopping-cart"></i> &nbsp;<span>Add to Cart</span></a>
+                        </div>
+                        <div class="love">
+                            <a href="#">
+                                <i class="fas fa-heart" title="yêu thích"></i>
+                            </a>
+                        </div>
+                    </a>
+                </div>
+                <div class="card-body">
+                    <div class="card-text">NIKE VAPORX XII PRO NEYMAR JR IC – AO4496-170 – XÁM / ĐỎ</div>
+                    <div class="price"><a href="">500000 &#8363;</a></div>
+                </div>
+
+            </div>
+        </div>
+        <div class=" piccard col-sm-3 col-6 mb-4">
+            <div class="card card-index">
+                <div class="pic">
+                    <a href="chi-tiet-san-pham.html">
+                        <img src="images/nike4.jpg"
+                             class="card-img-top" alt="hinh">
+                        <div class="buy">
+                            <a href="#"><i class="fas fa-shopping-cart"></i> &nbsp;<span>Add to Cart</span></a>
+                        </div>
+                        <div class="love">
+                            <a href="#">
+                                <i class="fas fa-heart" title="yêu thích"></i>
+                            </a>
+                        </div>
+                    </a>
+                </div>
+                <div class="card-body">
+                    <div class="card-text">NIKE VAPORX 12 ACADEMY TF – AH7384-107 – TRẮNG/CAM</div>
+                    <div class="price"><a href="">500000 &#8363;</a></div>
+                </div>
+
+            </div>
+        </div>
+        <div class=" piccard col-sm-3 col-6 mb-4">
+            <div class="card card-index">
+                <div class="pic">
+                    <a href="chi-tiet-san-pham.html">
+                        <img src="images/adidas1.jpg"
+                             class="card-img-top" alt="hinh">
+                        <div class="buy">
+                            <a href="#"><i class="fas fa-shopping-cart"></i> &nbsp; <span>Add to Cart</span></a>
+                        </div>
+                        <div class="love">
+                            <a href="#">
+                                <i class="fas fa-heart" title="yêu thích"></i>
+                            </a>
+                        </div>
+                    </a>
+                </div>
+                <div class="card-body">
+                    <div class="card-text">ADIDAS X TANGO 18.3 IN – BB9392 – ĐỎ/ BẠC</div>
+                    <div class="price"><a href="">500000 &#8363;</a></div>
+                </div>
+
+            </div>
+        </div>
+        <div class=" piccard col-sm-3 col-6 mb-4">
+            <div class="card card-index">
+                <div class="pic">
+                    <a href="chi-tiet-san-pham.html">
+                        <img src="images/adidas2.jpg"
+                             class="card-img-top" alt="hinh">
+                        <div class="buy">
+                            <a href="#"><i class="fas fa-shopping-cart"></i> &nbsp; <span>Add to Cart</span></a>
+                        </div>
+                        <div class="love">
+                            <a href="#">
+                                <i class="fas fa-heart" title="yêu thích"></i>
+                            </a>
+                        </div>
+                    </a>
+                </div>
+                <div class="card-body">
+                    <div class="card-text">ADIDAS X TANGO 18.3 IN – BB9393 – TRẮNG/ VÀNG CHANH</div>
+                    <div class="price"><a href="">500000 &#8363;</a></div>
+                </div>
+
+            </div>
+        </div>
+        <div class=" piccard col-sm-3 col-6 mb-4">
+            <div class="card card-index">
+                <div class="pic">
+                    <a href="chi-tiet-san-pham.html">
+                        <img src="images/adidas3.jpg"
+                             class="card-img-top" alt="hinh">
+                        <div class="buy">
+                            <a href="#"><i class="fas fa-shopping-cart"></i> &nbsp; <span>Add to Cart</span></a>
+                        </div>
+                        <div class="love">
+                            <a href="#">
+                                <i class="fas fa-heart" title="yêu thích"></i>
+                            </a>
+                        </div>
+                    </a>
+                </div>
+                <div class="card-body">
+                    <div class="card-text">ADIDAS COPA 19.3 IN SALA – F35502 – ĐEN/ĐỎ</div>
+                    <div class="price"><a href="">500000 &#8363;</a></div>
+                </div>
+
+            </div>
+        </div>
+        <div class="piccard col-sm-3 col-6 mb-4">
+            <div class="card card-index">
+                <div class="pic">
+                    <a href="chi-tiet-san-pham.html">
+                        <img src="images/adidas4.jpg"
+                             class="card-img-top" alt="hinh">
+                        <div class="buy">
+                            <a href="#"><i class="fas fa-shopping-cart"></i> &nbsp; <span>Add to Cart</span></a>
+                        </div>
+                        <div class="love">
+                            <a href="#">
+                                <i class="fas fa-heart" title="yêu thích"></i>
+                            </a>
+                        </div>
+                    </a>
+                </div>
+                <div class="card-body">
+                    <div class="card-text">ADIDAS X 19.1 IC – G25754 – XANH DA TRỜI/ TRẮNG</div>
+                    <div class="price"><a href="">500000 &#8363;</a></div>
+                </div>
+
+            </div>
+        </div>
+        <div class=" piccard col-sm-3 col-6 mb-4">
+            <div class="card card-index">
+                <div class="pic">
+                    <a href="chi-tiet-san-pham.html">
+                        <img src="images/pan1.jpg"
+                             class="card-img-top" alt="hinh">
+                        <div class="buy">
+                            <a href="#"><i class="fas fa-shopping-cart"></i> &nbsp; <span>Add to Cart</span></a>
+                        </div>
+                        <div class="love">
+                            <a href="#">
+                                <i class="fas fa-heart" title="yêu thích"></i>
+                            </a>
+                        </div>
+                    </a>
+                </div>
+                <div class="card-body">
+                    <div class="card-text">
+                        Pan Vigor 8 IC Dạ Quang
+                    </div>
+                    <div class="price"><a href="">500000 &#8363;</a></div>
+                </div>
+
+            </div>
+        </div>
+        <div class="piccard col-sm-3 col-6 mb-4">
+            <div class="card card-index">
+                <div class="pic">
+                    <a href="chi-tiet-san-pham.html">
+                        <img src="images/pan2.jpg"
+                             class="card-img-top" alt="hinh">
+                        <div class="buy">
+                            <a href="#"><i class="fas fa-shopping-cart"></i> &nbsp; <span>Add to Cart</span></a>
+                        </div>
+                        <div class="love">
+                            <a href="#">
+                                <i class="fas fa-heart" title="yêu thích"></i>
+                            </a>
+                        </div>
+                    </a>
+                </div>
+                <div class="card-body">
+                    <div class="card-text">
+                        Pan Vigor 8 IC Cam
+                    </div>
+                    <div class="price"><a href="">500000 &#8363;</a></div>
+                </div>
+
+            </div>
+        </div>
+        <div class="piccard col-sm-3 col-6 mb-4">
+            <div class="card card-index">
+                <div class="pic">
+                    <a href="chi-tiet-san-pham.html">
+                        <img src="images/pan3.jpg"
+                             class="card-img-top" alt="hinh">
+                        <div class="buy">
+                            <a href="#"><i class="fas fa-shopping-cart"></i> &nbsp; <span>Add to Cart</span></a>
+                        </div>
+                        <div class="love">
+                            <a href="#">
+                                <i class="fas fa-heart" title="yêu thích"></i>
+                            </a>
+                        </div>
+                    </a>
+                </div>
+                <div class="card-body">
+                    <div class="card-text"> Pan  Đế Đinh Rebeller </div>
+                    <div class="price"><a href="">500000 &#8363;</a></div>
+                </div>
+
+            </div>
+        </div>
+        <div class="piccard col-sm-3 col-6 mb-4">
+            <div class="card card-index">
+                <div class="pic">
+                    <a href="chi-tiet-san-pham.html">
+                        <img src="images/pan4.jpg"
+                             class="card-img-top" alt="hinh">
+                        <div class="buy">
+                            <a href="#"><i class="fas fa-shopping-cart"></i> &nbsp;<span>Add to Cart</span> </a>
+                        </div>
+                        <div class="love">
+                            <a href="#">
+                                <i class="fas fa-heart" title="yêu thích"></i>
+                            </a>
+                        </div>
+                    </a>
+                </div>
+                <div class="card-body">
+                    <div class="card-text"> Pan Đế Đinh Bravo TF</div>
+                    <div class="price"><a href="">500000 &#8363;</a></div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+    </div><!-- san pham giay bong da -->
+    <!-- san pham ao bong da -->
+    <div class="fields">
+        <a href="ao-bong-da.html">
+            <button type="button" class="btn btn-danger">Áo Bóng Đá</button>
+        </a>
+    </div>
+    <!-- san pham ao bong da -->
+    <!-- khung chua ao bong da -->
+    <div class="row text-transform">
+        <div class="piccard col-sm-3 col-6 mb-4">
+            <div class="card card-index">
+                <div class="pic">
+                    <a href="">
+                        <img src="images/phu-kien-ao-doi-tuyen-viet-nam-2020-trang-1-600x600.jpg"
+                             class="card-img-top" alt="hinh">
+                        <div class="buy">
+                            <a href="#"><i class="fas fa-shopping-cart"></i> &nbsp; <span>Add to Cart</span></a>
+                        </div>
+                        <div class="love">
+                            <a href="#">
+                                <i class="fas fa-heart" title="yêu thích"></i>
+                            </a>
+                        </div>
+                    </a>
+                </div>
+                <div class="card-body">
+                    <div class="card-text">Áo Đội Tuyển  Việt Nam </div>
+                    <div class="price"><a href="">100000 &#8363;</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="piccard col-sm-3 col-6 mb-4">
+            <div class="card card-index">
+                <div class="pic">
+                    <a href="chi-tiet-san-pham-1.html">
+                        <img src="images/Ao-argentina-san-khach-1-300x300.jpg"
+                             class="card-img-top" alt="hinh">
+                        <div class="buy">
+                            <a href="#"><i class="fas fa-shopping-cart"></i> &nbsp;<span>Add to Cart</span></a>
+                        </div>
+                        <div class="love">
+                            <a href="#">
+                                <i class="fas fa-heart" title="yêu thích"></i>
+                            </a>
+                        </div>
+                    </a>
+                </div>
+                <div class="card-body">
+                    <div class="card-text">Áo Đội Tuyển Argentina </div>
+                    <div class="price"><a href="">100000 &#8363;</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="piccard col-sm-3 col-6 mb-4">
+            <div class="card card-index">
+                <div class="pic">
+                    <a href="">
+                        <img src="images/Ao-argentina-san-nha-1-1-300x300.jpg"
+                             class="card-img-top" alt="hinh">
+                        <div class="buy">
+                            <a href="#"><i class="fas fa-shopping-cart"></i> &nbsp; <span>Add to Cart</span></a>
+                        </div>
+                        <div class="love">
+                            <a href="#">
+                                <i class="fas fa-heart" title="yêu thích"></i>
+                            </a>
+                        </div>
+                    </a>
+                </div>
+                <div class="card-body">
+                    <div class="card-text">Áo Đội Tuyển Argentina </div>
+                    <div class="price"><a href="">100000 &#8363;</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="piccard col-sm-3 col-6 mb-4">
+            <div class="card card-index">
+                <div class="pic">
+                    <a href="">
+                        <img src="images/Ao-atletico-san-nha-1.jpg"
+                             class="card-img-top" alt="hinh">
+                        <div class="buy">
+                            <a href="#"><i class="fas fa-shopping-cart"></i> &nbsp; <span>Add to Cart</span></a>
+                        </div>
+                        <div class="love">
+                            <a href="#">
+                                <i class="fas fa-heart" title="yêu thích"></i>
+                            </a>
+                        </div>
+                    </a>
+                </div>
+                <div class="card-body">
+                    <div class="card-text">Áo Đấu Atlentico  </div>
+                    <div class="price"><a href="">100000  &#8363;</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="piccard col-sm-3 col-6 mb-4">
+            <div class="card card-index">
+                <div class="pic">
+                    <a href="">
+                        <img src="images/Ao-bi-san-nha-1-300x300.jpg"
+                             class="card-img-top" alt="hinh">
+                        <div class="buy">
+                            <a href="#"><i class="fas fa-shopping-cart"></i> &nbsp; <span>Add to Cart</span></a>
+                        </div>
+                        <div class="love">
+                            <a href="#">
+                                <i class="fas fa-heart" title="yêu thích"></i>
+                            </a>
+                        </div>
+                    </a>
+                </div>
+                <div class="card-body">
+                    <div class="card-text">Áo Đội Tuyển Bỉ </div>
+                    <div class="price"><a href="">100000  &#8363;</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="piccard col-sm-3 col-6 mb-4">
+            <div class="card card-index">
+                <div class="pic">
+                    <a href="">
+                        <img src="images/Ao-brazil-san-khach-1-300x300.jpg"
+                             class="card-img-top" alt="hinh">
+                        <div class="buy">
+                            <a href="#"><i class="fas fa-shopping-cart"></i> &nbsp;<span>Add to Cart</span></a>
+                        </div>
+                        <div class="love">
+                            <a href="#">
+                                <i class="fas fa-heart" title="yêu thích"></i>
+                            </a>
+                        </div>
+                    </a>
+                </div>
+                <div class="card-body">
+                    <div class="card-text">Áo Đội Tuyển Brazil  </div>
+                    <div class="price"><a href="">100000  &#8363;</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="piccard col-sm-3 col-6 mb-4">
+            <div class="card card-index">
+                <div class="pic">
+                    <a href="">
+                        <img src="images/Ao-brazil-san-nha-1-300x300.jpg"
+                             class="card-img-top" alt="hinh">
+                        <div class="buy">
+                            <a href="#"><i class="fas fa-shopping-cart"></i> &nbsp; <span>Add to Cart</span></a>
+                        </div>
+                        <div class="love">
+                            <a href="#">
+                                <i class="fas fa-heart" title="yêu thích"></i>
+                            </a>
+                        </div>
+                    </a>
+                </div>
+                <div class="card-body">
+                    <div class="card-text">Áo Đội Tuyển Brazil Home</div>
+                    <div class="price"><a href="">100000  &#8363;</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="piccard col-sm-3 col-6 mb-4">
+            <div class="card card-index">
+                <div class="pic">
+                    <a href="">
+                        <img src="images/Ao-duc-san-nha-1.jpg"
+                             class="card-img-top" alt="hinh">
+                        <div class="buy">
+                            <a href="#"><i class="fas fa-shopping-cart"></i> &nbsp;<span>Add to Cart</span></a>
+                        </div>
+                        <div class="love">
+                            <a href="#">
+                                <i class="fas fa-heart" title="yêu thích"></i>
+                            </a>
+                        </div>
+                    </a>
+                </div>
+                <div class="card-body">
+                    <div class="card-text">Áo Đội Tuyển Đức </div>
+                    <div class="price"><a href="">100000  &#8363;</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="piccard col-sm-3 col-6 mb-4">
+            <div class="card card-index">
+                <div class="pic">
+                    <a href="">
+                        <img src="images/Ao-inter-san-nha-1.jpg"
+                             class="card-img-top" alt="hinh">
+                        <div class="buy">
+                            <a href="#"><i class="fas fa-shopping-cart"></i> &nbsp; <span>Add to Cart</span></a>
+                        </div>
+                        <div class="love">
+                            <a href="#">
+                                <i class="fas fa-heart" title="yêu thích"></i>
+                            </a>
+                        </div>
+                    </a>
+                </div>
+                <div class="card-body">
+                    <div class="card-text">Áo Đấu Inter </div>
+                    <div class="price"><a href="">100000  &#8363;</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="piccard col-sm-3 col-6 mb-4">
+            <div class="card card-index">
+                <div class="pic">
+                    <a href="">
+                        <img src="images/Ao-mexico-san-khach-1-300x300.jpg"
+                             class="card-img-top" alt="hinh">
+                        <div class="buy">
+                            <a href="#"><i class="fas fa-shopping-cart"></i> &nbsp; <span>Add to Cart</span></a>
+                        </div>
+                        <div class="love">
+                            <a href="#">
+                                <i class="fas fa-heart" title="yêu thích"></i>
+                            </a>
+                        </div>
+                    </a>
+                </div>
+                <div class="card-body">
+                    <div class="card-text">Áo Đội Tuyển Mexico </div>
+                    <div class="price"><a href="">100000  &#8363;</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="piccard col-sm-3 col-6 mb-4">
+            <div class="card card-index">
+                <div class="pic">
+                    <a href="">
+                        <img src="images/Ao-juventus-san-nha-1.jpg"
+                             class="card-img-top" alt="hinh">
+                        <div class="buy">
+                            <a href="#"><i class="fas fa-shopping-cart"></i> &nbsp; <span>Add to Cart</span></a>
+                        </div>
+                        <div class="love">
+                            <a href="#">
+                                <i class="fas fa-heart" title="yêu thích"></i>
+                            </a>
+                        </div>
+                    </a>
+                </div>
+                <div class="card-body">
+                    <div class="card-text">Áo Đấu Juventus </div>
+                    <div class="price"><a href="">100000  &#8363;</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="piccard col-sm-3 col-6 mb-4">
+            <div class="card card-index">
+                <div class="pic">
+                    <a href="">
+                        <img src="images/Ao-nga-san-nha-1-300x300.jpg"
+                             class="card-img-top" alt="hinh">
+                        <div class="buy">
+                            <a href="#"><i class="fas fa-shopping-cart"></i> &nbsp; <span>Add to Cart</span></a>
+                        </div>
+                        <div class="love">
+                            <a href="#">
+                                <i class="fas fa-heart" title="yêu thích"></i>
+                            </a>
+                        </div>
+                    </a>
+                </div>
+                <div class="card-body">
+                    <div class="card-text">Áo Đội Tuyển Nga</div>
+                    <div class="price"><a href="">100000  &#8363;</a></div>
+                </div>
+            </div>
+        </div>
+
+
+    </div><!-- khung chua ao bong da -->
+    <!-- san pham phu kien -->
+    <div class="fields">
+        <a href="phu-kien.html">
+            <button type="button" class="btn btn-danger">Phụ Kiện Bóng Đá</button>
+        </a>
+    </div>
+    <!-- san pham phu kien -->
+    <!-- khung chua ao bong da -->
+    <div class="row text-transform">
+        <div class="piccard col-sm-3 col-6 mb-4">
+            <div class="card card-index">
+                <div class="pic">
+                    <a href="">
+                        <img src="images/aolot1.png" class="card-img-top"
+                             alt="hinh">
+                        <div class="buy">
+                            <a href="#"><i class="fas fa-shopping-cart"></i> &nbsp; <span>Add to Cart</span></a>
+                        </div>
+                        <div class="love">
+                            <a href="#">
+                                <i class="fas fa-heart" title="yêu thích"></i>
+                            </a>
+                        </div>
+                    </a>
+                </div>
+                <div class="card-body">
+                    <div class="card-text">Áo Lót Chống Nắng </div>
+                    <div class="price"><a href="">100000 &#8363;</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="piccard col-sm-3 col-6 mb-4">
+            <div class="card card-index">
+                <div class="pic">
+                    <a href="">
+                        <img src="images/bong1.jpg" class="card-img-top" alt="hinh">
+                        <div class="buy">
+                            <a href="#"><i class="fas fa-shopping-cart"></i> &nbsp;<span>Add to Cart</span></a>
+                        </div>
+                        <div class="love">
+                            <a href="#">
+                                <i class="fas fa-heart" title="yêu thích"></i>
+                            </a>
+                        </div>
+                    </a>
+                </div>
+                <div class="card-body">
+                    <div class="card-text">Quả Bóng version1 </div>
+                    <div class="price"><a href="">200000 &#8363;</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="piccard col-sm-3 col-6 mb-4">
+            <div class="card card-index">
+                <div class="pic">
+                    <a href="">
+                        <img src="images/bong2.jpg" class="card-img-top"
+                             alt="hinh">
+                        <div class="buy">
+                            <a href="#"><i class="fas fa-shopping-cart"></i> &nbsp; <span>Add to Cart</span></a>
+                        </div>
+                        <div class="love">
+                            <a href="#">
+                                <i class="fas fa-heart" title="yêu thích"></i>
+                            </a>
+                        </div>
+                    </a>
+                </div>
+                <div class="card-body">
+                    <div class="card-text">Quả Bóng version2</div>
+                    <div class="price"><a href="">200000  &#8363;</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="piccard col-sm-3 col-6 mb-4">
+            <div class="card card-index">
+                <div class="pic">
+                    <a href="">
+                        <img src="images/bong3.jpg" class="card-img-top"
+                             alt="hinh">
+                        <div class="buy">
+                            <a href="#"><i class="fas fa-shopping-cart"></i> &nbsp; <span>Add to Cart</span></a>
+                        </div>
+                        <div class="love">
+                            <a href="#">
+                                <i class="fas fa-heart" title="yêu thích"></i>
+                            </a>
+                        </div>
+                    </a>
+                </div>
+                <div class="card-body">
+                    <div class="card-text">Quả Bóng version3 </div>
+                    <div class="price"><a href="">200000  &#8363;</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="piccard col-sm-3 col-6 mb-4">
+            <div class="card card-index">
+                <div class="pic">
+                    <a href="">
+                        <img src="images/bong4.png" class="card-img-top" alt="hinh">
+                        <div class="buy">
+                            <a href="#"><i class="fas fa-shopping-cart"></i> &nbsp; <span>Add to Cart</span></a>
+                        </div>
+                        <div class="love">
+                            <a href="#">
+                                <i class="fas fa-heart" title="yêu thích"></i>
+                            </a>
+                        </div>
+                    </a>
+                </div>
+                <div class="card-body">
+                    <div class="card-text">Quả Bóng version4 </div>
+                    <div class="price"><a href="">200000  &#8363;</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="piccard col-sm-3 col-6 mb-4">
+            <div class="card card-index">
+                <div class="pic">
+                    <a href="">
+                        <img src="images/bong5.jpg" class="card-img-top"
+                             alt="hinh">
+                        <div class="buy">
+                            <a href="#"><i class="fas fa-shopping-cart"></i> &nbsp;<span>Add to Cart</span></a>
+                        </div>
+                        <div class="love">
+                            <a href="#">
+                                <i class="fas fa-heart" title="yêu thích"></i>
+                            </a>
+                        </div>
+                    </a>
+                </div>
+                <div class="card-body">
+                    <div class="card-text">Quả Bóng version5 </div>
+                    <div class="price"><a href="">200000 &#8363;</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="piccard col-sm-3 col-6 mb-4">
+            <div class="card card-index">
+                <div class="pic">
+                    <a href="">
+                        <img src="images/bong6.jpg" class="card-img-top" alt="hinh">
+                        <div class="buy">
+                            <a href="#"><i class="fas fa-shopping-cart"></i> &nbsp; <span>Add to Cart</span></a>
+                        </div>
+                        <div class="love">
+                            <a href="#">
+                                <i class="fas fa-heart" title="yêu thích"></i>
+                            </a>
+                        </div>
+                    </a>
+                </div>
+                <div class="card-body">
+                    <div class="card-text">Quả Bóng version6 </div>
+                    <div class="price"><a href="">200000 &#8363;</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="piccard col-sm-3 col-6 mb-4">
+            <div class="card card-index">
+                <div class="pic">
+                    <a href="">
+                        <img src="images/bong7.jpg" class="card-img-top"
+                             alt="hinh">
+                        <div class="buy">
+                            <a href="#"><i class="fas fa-shopping-cart"></i> &nbsp; <span>Add to Cart</span></a>
+                        </div>
+                        <div class="love">
+                            <a href="#">
+                                <i class="fas fa-heart" title="yêu thích"></i>
+                            </a>
+                        </div>
+                    </a>
+                </div>
+                <div class="card-body">
+                    <div class="card-text">Quả Bóng version7 </div>
+                    <div class="price"><a href="">200000 &#8363;</a></div>
+                </div>
+            </div>
+        </div>
+    </div><!-- khung chua phu kien -->
+</div> <!-- container end -->
+<div class="contact d-flex justify-content-center align-items-center mt-3 ">
+    <div class="contact-info d-flex justify-content-center align-items-center flex-column p-5 text-danger ">
+        <h2 style="font-weight: 700;">nhận tư vấn miễn phí</h2>
+        <p>Quý khách đừng ngần ngại liên hệ với Shop để nhận được tư vấn miễn phí khi mua hàng.</p>
+        <input class="btn btn-primary" type="button" value="Hotline 090000001">
+    </div>
+</div>
