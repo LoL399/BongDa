@@ -1,0 +1,254 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SoccerStoreModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="SoccerStoreEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ChiTietMaus" EntityType="SoccerStoreModel.ChiTietMau" />
+    <EntitySet Name="CTKichCoes" EntityType="SoccerStoreModel.CTKichCo" />
+    <EntitySet Name="HinhAnhs" EntityType="SoccerStoreModel.HinhAnh" />
+    <EntitySet Name="Kichcoes" EntityType="SoccerStoreModel.Kichco" />
+    <EntitySet Name="MauSacs" EntityType="SoccerStoreModel.MauSac" />
+    <EntitySet Name="NSXes" EntityType="SoccerStoreModel.NSX" />
+    <EntitySet Name="PhanLoais" EntityType="SoccerStoreModel.PhanLoai" />
+    <EntitySet Name="SanPhams" EntityType="SoccerStoreModel.SanPham" />
+    <EntitySet Name="sysdiagrams" EntityType="SoccerStoreModel.sysdiagram" />
+    <EntitySet Name="Users" EntityType="SoccerStoreModel.User" />
+    <EntitySet Name="UserInfos" EntityType="SoccerStoreModel.UserInfo" />
+    <AssociationSet Name="FK_ChiTietMau_MauSac" Association="SoccerStoreModel.FK_ChiTietMau_MauSac">
+      <End Role="MauSac" EntitySet="MauSacs" />
+      <End Role="ChiTietMau" EntitySet="ChiTietMaus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChiTietMau_SanPham" Association="SoccerStoreModel.FK_ChiTietMau_SanPham">
+      <End Role="SanPham" EntitySet="SanPhams" />
+      <End Role="ChiTietMau" EntitySet="ChiTietMaus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CTKichCo_Kichco" Association="SoccerStoreModel.FK_CTKichCo_Kichco">
+      <End Role="Kichco" EntitySet="Kichcoes" />
+      <End Role="CTKichCo" EntitySet="CTKichCoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CTKichCo_SanPham" Association="SoccerStoreModel.FK_CTKichCo_SanPham">
+      <End Role="SanPham" EntitySet="SanPhams" />
+      <End Role="CTKichCo" EntitySet="CTKichCoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HinhAnh_SanPham" Association="SoccerStoreModel.FK_HinhAnh_SanPham">
+      <End Role="SanPham" EntitySet="SanPhams" />
+      <End Role="HinhAnh" EntitySet="HinhAnhs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SanPham_NSX" Association="SoccerStoreModel.FK_SanPham_NSX">
+      <End Role="NSX" EntitySet="NSXes" />
+      <End Role="SanPham" EntitySet="SanPhams" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SanPham_PhanLoai" Association="SoccerStoreModel.FK_SanPham_PhanLoai">
+      <End Role="PhanLoai" EntitySet="PhanLoais" />
+      <End Role="SanPham" EntitySet="SanPhams" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserInfos_User" Association="SoccerStoreModel.FK_UserInfos_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UserInfo" EntitySet="UserInfos" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="ChiTietMau">
+    <Key>
+      <PropertyRef Name="IDCT" />
+    </Key>
+    <Property Name="IDCT" Type="Int32" Nullable="false" />
+    <Property Name="TinhTrang" Type="Boolean" Nullable="false" />
+    <Property Name="Gia" Type="Single" Nullable="false" />
+    <Property Name="IDSP" Type="Int32" Nullable="false" />
+    <Property Name="IDMau" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="MauSac" Relationship="SoccerStoreModel.FK_ChiTietMau_MauSac" FromRole="ChiTietMau" ToRole="MauSac" />
+    <NavigationProperty Name="SanPham" Relationship="SoccerStoreModel.FK_ChiTietMau_SanPham" FromRole="ChiTietMau" ToRole="SanPham" />
+  </EntityType>
+  <EntityType Name="CTKichCo">
+    <Key>
+      <PropertyRef Name="IDCT" />
+    </Key>
+    <Property Name="IDCT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TinhTrang" Type="Boolean" Nullable="false" />
+    <Property Name="IDSP" Type="Int32" Nullable="false" />
+    <Property Name="IDKC" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Kichco" Relationship="SoccerStoreModel.FK_CTKichCo_Kichco" FromRole="CTKichCo" ToRole="Kichco" />
+    <NavigationProperty Name="SanPham" Relationship="SoccerStoreModel.FK_CTKichCo_SanPham" FromRole="CTKichCo" ToRole="SanPham" />
+  </EntityType>
+  <EntityType Name="HinhAnh">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDSP" Type="Int32" Nullable="false" />
+    <Property Name="URL" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="SanPham" Relationship="SoccerStoreModel.FK_HinhAnh_SanPham" FromRole="HinhAnh" ToRole="SanPham" />
+  </EntityType>
+  <EntityType Name="Kichco">
+    <Key>
+      <PropertyRef Name="IDKichCo" />
+    </Key>
+    <Property Name="IDKichCo" Type="Int32" Nullable="false" />
+    <Property Name="Mota" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CTKichCoes" Relationship="SoccerStoreModel.FK_CTKichCo_Kichco" FromRole="Kichco" ToRole="CTKichCo" />
+  </EntityType>
+  <EntityType Name="MauSac">
+    <Key>
+      <PropertyRef Name="IDMau" />
+    </Key>
+    <Property Name="IDMau" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenMau" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ChiTietMaus" Relationship="SoccerStoreModel.FK_ChiTietMau_MauSac" FromRole="MauSac" ToRole="ChiTietMau" />
+  </EntityType>
+  <EntityType Name="NSX">
+    <Key>
+      <PropertyRef Name="IDNSX" />
+    </Key>
+    <Property Name="IDNSX" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenNSX" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Xuatxu" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="SanPhams" Relationship="SoccerStoreModel.FK_SanPham_NSX" FromRole="NSX" ToRole="SanPham" />
+  </EntityType>
+  <EntityType Name="PhanLoai">
+    <Key>
+      <PropertyRef Name="IDPhanLoai" />
+    </Key>
+    <Property Name="IDPhanLoai" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenPhanLoai" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="SanPhams" Relationship="SoccerStoreModel.FK_SanPham_PhanLoai" FromRole="PhanLoai" ToRole="SanPham" />
+  </EntityType>
+  <EntityType Name="SanPham">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenSanpham" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IDNSX" Type="Int32" Nullable="false" />
+    <Property Name="Gia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IDPhanLoai" Type="Int32" Nullable="false" />
+    <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ChiTietMaus" Relationship="SoccerStoreModel.FK_ChiTietMau_SanPham" FromRole="SanPham" ToRole="ChiTietMau" />
+    <NavigationProperty Name="CTKichCoes" Relationship="SoccerStoreModel.FK_CTKichCo_SanPham" FromRole="SanPham" ToRole="CTKichCo" />
+    <NavigationProperty Name="HinhAnhs" Relationship="SoccerStoreModel.FK_HinhAnh_SanPham" FromRole="SanPham" ToRole="HinhAnh" />
+    <NavigationProperty Name="NSX" Relationship="SoccerStoreModel.FK_SanPham_NSX" FromRole="SanPham" ToRole="NSX" />
+    <NavigationProperty Name="PhanLoai" Relationship="SoccerStoreModel.FK_SanPham_PhanLoai" FromRole="SanPham" ToRole="PhanLoai" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Username" />
+    </Key>
+    <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Role" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="UserInfos" Relationship="SoccerStoreModel.FK_UserInfos_User" FromRole="User" ToRole="UserInfo" />
+  </EntityType>
+  <EntityType Name="UserInfo">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DiaChi" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="User" Relationship="SoccerStoreModel.FK_UserInfos_User" FromRole="UserInfo" ToRole="User" />
+  </EntityType>
+  <Association Name="FK_ChiTietMau_MauSac">
+    <End Type="SoccerStoreModel.MauSac" Role="MauSac" Multiplicity="1" />
+    <End Type="SoccerStoreModel.ChiTietMau" Role="ChiTietMau" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MauSac">
+        <PropertyRef Name="IDMau" />
+      </Principal>
+      <Dependent Role="ChiTietMau">
+        <PropertyRef Name="IDMau" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChiTietMau_SanPham">
+    <End Type="SoccerStoreModel.SanPham" Role="SanPham" Multiplicity="1" />
+    <End Type="SoccerStoreModel.ChiTietMau" Role="ChiTietMau" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SanPham">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ChiTietMau">
+        <PropertyRef Name="IDSP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CTKichCo_Kichco">
+    <End Type="SoccerStoreModel.Kichco" Role="Kichco" Multiplicity="1" />
+    <End Type="SoccerStoreModel.CTKichCo" Role="CTKichCo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kichco">
+        <PropertyRef Name="IDKichCo" />
+      </Principal>
+      <Dependent Role="CTKichCo">
+        <PropertyRef Name="IDKC" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CTKichCo_SanPham">
+    <End Type="SoccerStoreModel.SanPham" Role="SanPham" Multiplicity="1" />
+    <End Type="SoccerStoreModel.CTKichCo" Role="CTKichCo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SanPham">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CTKichCo">
+        <PropertyRef Name="IDSP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HinhAnh_SanPham">
+    <End Type="SoccerStoreModel.SanPham" Role="SanPham" Multiplicity="1" />
+    <End Type="SoccerStoreModel.HinhAnh" Role="HinhAnh" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SanPham">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="HinhAnh">
+        <PropertyRef Name="IDSP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SanPham_NSX">
+    <End Type="SoccerStoreModel.NSX" Role="NSX" Multiplicity="1" />
+    <End Type="SoccerStoreModel.SanPham" Role="SanPham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NSX">
+        <PropertyRef Name="IDNSX" />
+      </Principal>
+      <Dependent Role="SanPham">
+        <PropertyRef Name="IDNSX" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SanPham_PhanLoai">
+    <End Type="SoccerStoreModel.PhanLoai" Role="PhanLoai" Multiplicity="1" />
+    <End Type="SoccerStoreModel.SanPham" Role="SanPham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PhanLoai">
+        <PropertyRef Name="IDPhanLoai" />
+      </Principal>
+      <Dependent Role="SanPham">
+        <PropertyRef Name="IDPhanLoai" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserInfos_User">
+    <End Type="SoccerStoreModel.User" Role="User" Multiplicity="1" />
+    <End Type="SoccerStoreModel.UserInfo" Role="UserInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Username" />
+      </Principal>
+      <Dependent Role="UserInfo">
+        <PropertyRef Name="Username" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
