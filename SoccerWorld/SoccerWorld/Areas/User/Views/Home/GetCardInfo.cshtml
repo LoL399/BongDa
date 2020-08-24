@@ -1,0 +1,30 @@
+﻿@model List<SoccerWorld.Models.SanPham>
+
+
+@foreach (var x in Model)
+{
+    <div class="piccard col-sm-3 col-6 mb-4">
+        <div class="card card-index">
+            <div class="pic">
+                <a href=@Url.Action("Product","Home", new { id = x.ID} )>
+                    <div class="carousel-inner">
+                        @Html.Action("GetImg", new { id = x.ID })
+                    </div>
+                    <div class="buy">
+                        <a href="#"><i class="fas fa-shopping-cart"></i> &nbsp; <span>Add to Cart</span> </a>
+                    </div>
+                    <div class="love">
+                        <a href="#">
+                            <i class="fas fa-heart" title="yêu thích"></i>
+                        </a>
+                    </div>
+                </a>
+            </div>
+            <div class="card-body">
+                <div class="card-text">@x.TenSanpham</div>
+                <div class="price"><a href="">@x.Gia VND</a></div>
+            </div>
+
+        </div>
+    </div>
+}

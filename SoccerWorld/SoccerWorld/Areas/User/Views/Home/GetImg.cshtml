@@ -1,0 +1,11 @@
+﻿@model List<SoccerWorld.Models.HinhAnh>
+
+@{int j = 0;}
+@foreach (var x in Model)
+{
+    j++;
+    var active = j == 1 ? "active" : "";
+    <div class="carousel-item @active">
+        <img class="d-block w-100" src="@x.URL" alt="...">
+    </div>
+}

@@ -361,6 +361,11 @@
     <Content Include="Areas\User\Views\Home\Index.cshtml" />
     <Content Include="Areas\User\Views\_ViewStart.cshtml" />
     <Content Include="Areas\User\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\User\Views\Home\_Category.cshtml" />
+    <Content Include="Areas\User\Views\Home\GetMau.cshtml" />
+    <Content Include="Areas\User\Views\Home\GetSize.cshtml" />
+    <Content Include="Areas\User\Views\Home\GetImg.cshtml" />
+    <Content Include="Areas\User\Views\Home\GetCardInfo.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

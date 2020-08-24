@@ -70,38 +70,14 @@
                         <li class="nav-item dropdown ">
                             <a class="nav-link dropdown-toggle" href="ao-bong-da.html" id="navbarDropdown" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Áo Bóng Đá
+                                Phân loại
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="ao-bong-da-clb.html">Áo CLB Thế Giới</a>
-                                <a class="dropdown-item" href="ao-bong-da-dt.html"> Áo Quốc Gia </a>
-                                <a class="dropdown-item" href="ao-bong-da-ko-logo.html"> Áo Đấu Không Logo </a>
+                                @Html.Action("Category","Home","User")
                             </div>
+                                
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="giay-bong-da.html" id="navbarDropdown" role="button"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Giày Bóng Đá
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="giay-pan-thai.html">Giày Pan thái</a>
-                                <a class="dropdown-item" href="giay-nike.html"> giày NIKE </a>
-                                <a class="dropdown-item" href="giay-adidas.html"> giày ADIDAS</a>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="phu-kien.html" id="navbarDropdown" role="button"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Phụ Kiện Bóng Đá
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="vo.html">Vớ</a>
-                                <a class="dropdown-item" href="banh.html"> Banh </a>
-                                <a class="dropdown-item" href="gang-tay.html"> Găng Tay Thủ Môn</a>
-                                <a class="dropdown-item" href="bo-got.html"> Bó Gót & Bó Gối </a>
-                                <a class="dropdown-item" href="ao-lot.html"> Áo Lót & Chống Nắng</a>
-                            </div>
-                        </li>
+                        
                         <li class="nav-item">
                             <a class="nav-link" href="connect.html">Liên Hệ</a>
                         </li>
@@ -152,6 +128,7 @@
 
 
                     </ul>
+
                     <form class="form-inline my-2 my-lg-0">
                         <input class="form-control mr-sm-2" type="search" placeholder="Tìm Kiếm Sản Phẩm ..."
                                aria-label="Search">
