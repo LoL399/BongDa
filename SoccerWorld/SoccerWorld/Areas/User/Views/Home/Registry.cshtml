@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewBag.Title = "Product";
+
+}
+@if (Session["UserName"] == null)
+{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+else if (Session["UserName"] != null)
+{
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<div class="h3 text-danger mx-auto" style="width: 200px;">Đăng ký</div>
+@using (Html.BeginForm("Registry", "Home"))
+{
+    @Html.AntiForgeryToken()
+
+
+
+    var a1 = "";
+    var a2 = "";
+    var a3 = "";
+    var border = "border border-danger";
+    var b = "hidden";
+    var c = "";
+    if (ViewBag.Error != null)
+    {
+        b = "";
+    }
+    switch (ViewBag.Error)
+    {
+        case 1: c = "Mật khẩu phải từ 8 ký tự trở lên và có ít nhất 1 ký tự hoa"; a1 = border;  break;
+        case 2: c = "Email không đúng dạng"; a2 = border; break;
+        case 3: c = "Tên user đã được dùng bởi ai đó"; a3 = border; break;
+    }
+
+
+<div class="container-fluid">
+
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" style="width:100px" id="basic-addon1">Tài Khoản</span>
+        </div>
+        <input type="text" name="name" class="form-control @a3" placeholder="Username"
+               aria-label="Username" aria-describedby="basic-addon1" required >
+    </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" style="width:100px" id="basic-addon1">Mật Khẩu</span>
+            </div>
+            <input type="password" name="pass" class="form-control @a1" placeholder="Password"
+                   aria-label="Password" aria-describedby="basic-addon1" required>
+        </div> 
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" style="width:100px" id="basic-addon1">Email</span>
+            </div>
+            <input type="text" name="email" class="form-control @a2" placeholder="Email"
+                   aria-describedby="basic-addon1" required>
+        </div>
+        <div class="input-group mb-3" >
+
+            <div class="input-group-prepend">
+                <span class="input-group-text" style="width:100px" id="basic-addon1">Địa chỉ</span>
+            </div>
+            <input type="text" name="diachi" class="form-control " placeholder="Địa chỉ"
+                   aria-describedby="basic-addon1" required>
+        </div>
+        
+        <div class="input-group mb-3" @b>
+            <p class="text-danger">@c</p>
+        </div>
+</div>
+    <div class="modal-footer d-flex justify-content-start ">
+        <button type="submit" class="btn btn-primary" id="login">Đăng Ký</button>
+    </div>
+}

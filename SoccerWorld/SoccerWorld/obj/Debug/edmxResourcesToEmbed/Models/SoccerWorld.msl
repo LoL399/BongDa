@@ -87,15 +87,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Users">
-      <EntityTypeMapping TypeName="SoccerStoreModel.User">
-        <MappingFragment StoreEntitySet="User">
-          <ScalarProperty Name="Role" ColumnName="Role" />
-          <ScalarProperty Name="Password" ColumnName="Password" />
-          <ScalarProperty Name="Username" ColumnName="Username" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="UserInfos">
       <EntityTypeMapping TypeName="SoccerStoreModel.UserInfo">
         <MappingFragment StoreEntitySet="UserInfos">
@@ -103,6 +94,15 @@
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="Username" ColumnName="Username" />
           <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserTBs">
+      <EntityTypeMapping TypeName="SoccerStoreModel.UserTB">
+        <MappingFragment StoreEntitySet="UserTB">
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -15,35 +15,20 @@ else if (Session["UserName"] != null)
     <div id="carouselExampleControls" class="carousel slide carousel-fade h-75" data-ride="carousel"
          data-interval="3000">
         <div class="carousel-inner">
-            <div class="carousel-item">
-                <a href="">
-                    <img src="images/Untitled-1.png" class="d-block w-100 " alt="...">
-                </a>
-            </div>
-            <div class="carousel-item">
-                <a href="">
-                    <img src="images/Untitled-2.png" class="d-block w-100 " alt="...">
-                </a>
-            </div>
             <div class="carousel-item active">
-                <a href="chi-tiet-san-pham.html">
+                <a href="#">
                     <img src="https://shopbongda.vn/wp-content/uploads/2020/03/banner-website-NEMEZIZ-MESSI-1500x500-1.png"
                          class="d-block w-100" alt="...">
                 </a>
             </div>
 
             <div class="carousel-item">
-                <a href="chi-tiet-san-pham.html">
+                <a href="#">
                     <img src="https://shopbongda.vn/wp-content/uploads/2020/03/banner-website-NEMEZIZ-MESSI-XANH-DẠ-QUANG-1500x500-1.png"
                          class="d-block w-100" alt="...">
                 </a>
             </div>
-            <div class="carousel-item">
-                <a href="chi-tiet-san-pham.html">
-                    <img src="https://shopbongda.vn/wp-content/uploads/2020/03/banner-website-NEMEZIZ-MESSI-XANH-DẠ-QUANG-1500x500-1.png"
-                         class="d-block w-100" alt="...">
-                </a>
-            </div>
+
         </div>
         <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -60,7 +45,7 @@ else if (Session["UserName"] != null)
         <div class="note">
             <div class="notice">
                 <div class="notice-img-icon">
-                    <img src="images/shipping-white.png" alt="ship">
+
                 </div>
                 <div class="notice-title">
                     <h5>FREE SHIP TOÀN QUỐC</h5>
@@ -69,7 +54,7 @@ else if (Session["UserName"] != null)
             </div>
             <div class="notice">
                 <div class="notice-img-icon">
-                    <img src="images/doi-tra-white.png" alt="ship">
+
                 </div>
                 <div class="notice-title">
                     <h5>BẢO HÀNH 3 THÁNG</h5>
@@ -100,21 +85,17 @@ else if (Session["UserName"] != null)
     <div class="fields">
         <a href="#" class="h3 font-italic font-weight-bold text-danger">
             @x.TenPhanLoai
-        </a>
-    <hr />
-        <div class="row text-transform">
+        </a><hr />
+        <div class="row text-transform" >
             <!-- khung hinh giay bong da -->
-            @Html.Action("GetCardInfo", new {  id = x.IDPhanLoai })
-            
 
+            @Html.Action("GetCardInfo", new {  id = x.IDPhanLoai, no = 5 })
+  
 
         </div>
-    
-
-    <!-- san pham giay bong da -->
-    <!-- san pham giay bong da -->
-
-    </div> }<!-- container end -->
+     </div> 
+     }<!-- container end -->
+</div>
 <div class="contact d-flex justify-content-center align-items-center mt-3 ">
     <div class="contact-info d-flex justify-content-center align-items-center flex-column p-5 text-danger ">
         <h2 style="font-weight: 700;">nhận tư vấn miễn phí</h2>

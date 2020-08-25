@@ -73,7 +73,7 @@
                                 Phân loại
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                @Html.Action("Category","Home","User")
+                                @Html.Action("Category","Home")
                             </div>
                                 
                         </li>
@@ -95,32 +95,42 @@
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
-                                        <div class="modal-body">
-                                            <div class="input-group mb-3">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text" id="basic-addon1">Tài Khoản</span>
-                                                </div>
-                                                <input type="text" class="form-control" placeholder="Username"
-                                                       aria-label="Username" aria-describedby="basic-addon1">
+                                        @using (Html.BeginForm("Login", "Home"))
+                                        {
+                                            @Html.AntiForgeryToken()
+                                    <div class="modal-body">
+
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1">Tài Khoản</span>
                                             </div>
-                                            <div class="input-group mb-3">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text" id="basic-addon1">Mật Khẩu</span>
-                                                </div>
-                                                <input type="password" class="form-control" placeholder="Password"
-                                                       aria-label="Password" aria-describedby="basic-addon1">
-                                            </div>
+                                            <input type="text" name="name" class="form-control" placeholder="Username"
+                                                   aria-label="Username" aria-describedby="basic-addon1">
                                         </div>
-                                        <div class="modal-footer d-flex justify-content-start ">
-                                            <button type="button" class="btn btn-primary" id="login">Đăng Nhập</button>
-                                            <button type="button" class="btn btn-primary" id="loginface">
-                                                Đăng Nhập Bằng
-                                                FaceBook
-                                            </button>
-                                            <div class="bonus">
-                                                <a href="" id="forget-pw">Quên Mật Khẩu?</a> <a href="register.html" id="register-user">Đăng kí Tài Khoản </a>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1">Mật Khẩu</span>
                                             </div>
+                                            <input type="password" name="pass" class="form-control" placeholder="Password"
+                                                   aria-label="Password" aria-describedby="basic-addon1">
                                         </div>
+                                        @if (ViewBag.Error==123)
+                                        {
+
+                                            <div class="input-group mb-3">
+                                                <p class="text-danger">Tên đăng nhập hoặc mật khẩu bị sai</p>
+                                            </div>
+                                        }
+
+                                    </div>
+                                            <div class="modal-footer d-flex justify-content-start ">
+                                                <button type="submit" class="btn btn-primary" id="login">Đăng Nhập</button>
+                                                <div class="bonus">
+                                                    <a href="" id="forget-pw">Quên Mật Khẩu?</a> <a href="@Url.Action("Registry","Home")" id="register-user">Đăng kí Tài Khoản </a>
+                                                </div>
+                                            </div>
+                                        }
+
                                     </div>
                                 </div>
                             </div>
@@ -263,6 +273,14 @@
 
     <script src="~/content/src/js/jquery-3.5.1.min.js"></script>
     <script src="~/content/src/boostrap/bootstrap.bundle.min.js"></script>
+    @if (ViewBag.Error == 123)
+    {
+        <script>
+
+            $('#exampleModal').modal('show');
+
+        </script>
+    }
 </body>
 
 </html>

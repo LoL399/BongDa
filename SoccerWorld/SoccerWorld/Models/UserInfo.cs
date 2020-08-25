@@ -19,6 +19,6 @@ namespace SoccerWorld.Models
         public string Email { get; set; }
         public string DiaChi { get; set; }
     
-        public virtual User User { get; set; }
+        public virtual UserTB UserTB { get; set; }
     }
 }

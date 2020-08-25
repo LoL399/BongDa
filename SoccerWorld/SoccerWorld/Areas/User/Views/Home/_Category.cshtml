@@ -1,5 +1,5 @@
 ﻿@model List<SoccerWorld.Models.PhanLoai>
     @foreach (var x in Model)
     {
-        <a class="dropdown-item" href="ao-bong-da-clb.html">@x.TenPhanLoai</a>
+        <a class="dropdown-item" href="@Url.Action("ListPageCategory", "Home", new { id = x.IDPhanLoai })">@x.TenPhanLoai</a>
     }

@@ -34,7 +34,7 @@ namespace SoccerWorld.Models
         public virtual DbSet<PhanLoai> PhanLoais { get; set; }
         public virtual DbSet<SanPham> SanPhams { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
-        public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UserInfo> UserInfos { get; set; }
+        public virtual DbSet<UserTB> UserTBs { get; set; }
     }
 }

@@ -77,14 +77,6 @@
     <Property Name="version" Type="int" />
     <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
-  <EntityType Name="User">
-    <Key>
-      <PropertyRef Name="Username" />
-    </Key>
-    <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="Password" Type="nvarchar" MaxLength="20" Nullable="false" />
-    <Property Name="Role" Type="bit" Nullable="false" />
-  </EntityType>
   <EntityType Name="UserInfos">
     <Key>
       <PropertyRef Name="ID" />
@@ -93,6 +85,14 @@
     <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="DiaChi" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserTB">
+    <Key>
+      <PropertyRef Name="Username" />
+    </Key>
+    <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Role" Type="bit" Nullable="false" />
   </EntityType>
   <Association Name="FK_ChiTietMau_MauSac">
     <End Role="MauSac" Type="Self.MauSac" Multiplicity="1" />
@@ -179,10 +179,10 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_UserInfos_User">
-    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="UserTB" Type="Self.UserTB" Multiplicity="1" />
     <End Role="UserInfos" Type="Self.UserInfos" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="User">
+      <Principal Role="UserTB">
         <PropertyRef Name="Username" />
       </Principal>
       <Dependent Role="UserInfos">
@@ -200,8 +200,8 @@
     <EntitySet Name="PhanLoai" EntityType="Self.PhanLoai" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SanPham" EntityType="Self.SanPham" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserInfos" EntityType="Self.UserInfos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserTB" EntityType="Self.UserTB" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_ChiTietMau_MauSac" Association="Self.FK_ChiTietMau_MauSac">
       <End Role="MauSac" EntitySet="MauSac" />
       <End Role="ChiTietMau" EntitySet="ChiTietMau" />
@@ -231,7 +231,7 @@
       <End Role="SanPham" EntitySet="SanPham" />
     </AssociationSet>
     <AssociationSet Name="FK_UserInfos_User" Association="Self.FK_UserInfos_User">
-      <End Role="User" EntitySet="User" />
+      <End Role="UserTB" EntitySet="UserTB" />
       <End Role="UserInfos" EntitySet="UserInfos" />
     </AssociationSet>
   </EntityContainer>

@@ -12,10 +12,10 @@ namespace SoccerWorld.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class UserTB
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User()
+        public UserTB()
         {
             this.UserInfos = new HashSet<UserInfo>();
         }

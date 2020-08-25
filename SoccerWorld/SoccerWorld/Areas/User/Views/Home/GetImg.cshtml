@@ -1,11 +1,26 @@
 ﻿@model List<SoccerWorld.Models.HinhAnh>
 
-@{int j = 0;}
-@foreach (var x in Model)
+@if (Model.Count < 1)
 {
-    j++;
-    var active = j == 1 ? "active" : "";
-    <div class="carousel-item @active">
-        <img class="d-block w-100" src="@x.URL" alt="...">
+    <div class="carousel-item active">
+        <img class="d-block w-100 img-thumbnail img-fluid" style="height: 100%" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/450px-No_image_available.svg.png" alt="...">
     </div>
 }
+else
+{
+    int j = 0;
+    foreach (var x in Model)
+    {
+        j++;
+        var active = j == 1 ? "active" : "";
+        <div class="carousel-item @active">
+            <img class="d-block w-100 img-thumbnail img-fluid"  style="height: 100%" src="@x.URL" alt="...">
+        </div>
+    }
+
+}
+
+
+
+
+

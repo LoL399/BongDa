@@ -8,7 +8,7 @@
             <div class="pic">
                 <a href=@Url.Action("Product","Home", new { id = x.ID} )>
                     <div class="carousel-inner">
-                        @Html.Action("GetImg", new { id = x.ID })
+                        @Html.Action("GetImgCard", new { id = x.ID })
                     </div>
                     <div class="buy">
                         <a href="#"><i class="fas fa-shopping-cart"></i> &nbsp; <span>Add to Cart</span> </a>

@@ -82,14 +82,6 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
-        <EntityType Name="User">
-          <Key>
-            <PropertyRef Name="Username" />
-          </Key>
-          <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Password" Type="nvarchar" MaxLength="20" Nullable="false" />
-          <Property Name="Role" Type="bit" Nullable="false" />
-        </EntityType>
         <EntityType Name="UserInfos">
           <Key>
             <PropertyRef Name="ID" />
@@ -98,6 +90,14 @@
           <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="DiaChi" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserTB">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Role" Type="bit" Nullable="false" />
         </EntityType>
         <Association Name="FK_ChiTietMau_MauSac">
           <End Role="MauSac" Type="Self.MauSac" Multiplicity="1" />
@@ -184,10 +184,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_UserInfos_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="UserTB" Type="Self.UserTB" Multiplicity="1" />
           <End Role="UserInfos" Type="Self.UserInfos" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="User">
+            <Principal Role="UserTB">
               <PropertyRef Name="Username" />
             </Principal>
             <Dependent Role="UserInfos">
@@ -205,8 +205,8 @@
           <EntitySet Name="PhanLoai" EntityType="Self.PhanLoai" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SanPham" EntityType="Self.SanPham" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserInfos" EntityType="Self.UserInfos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserTB" EntityType="Self.UserTB" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_ChiTietMau_MauSac" Association="Self.FK_ChiTietMau_MauSac">
             <End Role="MauSac" EntitySet="MauSac" />
             <End Role="ChiTietMau" EntitySet="ChiTietMau" />
@@ -236,7 +236,7 @@
             <End Role="SanPham" EntitySet="SanPham" />
           </AssociationSet>
           <AssociationSet Name="FK_UserInfos_User" Association="Self.FK_UserInfos_User">
-            <End Role="User" EntitySet="User" />
+            <End Role="UserTB" EntitySet="UserTB" />
             <End Role="UserInfos" EntitySet="UserInfos" />
           </AssociationSet>
         </EntityContainer>
@@ -254,8 +254,8 @@
           <EntitySet Name="PhanLoais" EntityType="SoccerStoreModel.PhanLoai" />
           <EntitySet Name="SanPhams" EntityType="SoccerStoreModel.SanPham" />
           <EntitySet Name="sysdiagrams" EntityType="SoccerStoreModel.sysdiagram" />
-          <EntitySet Name="Users" EntityType="SoccerStoreModel.User" />
           <EntitySet Name="UserInfos" EntityType="SoccerStoreModel.UserInfo" />
+          <EntitySet Name="UserTBs" EntityType="SoccerStoreModel.UserTB" />
           <AssociationSet Name="FK_ChiTietMau_MauSac" Association="SoccerStoreModel.FK_ChiTietMau_MauSac">
             <End Role="MauSac" EntitySet="MauSacs" />
             <End Role="ChiTietMau" EntitySet="ChiTietMaus" />
@@ -285,7 +285,7 @@
             <End Role="SanPham" EntitySet="SanPhams" />
           </AssociationSet>
           <AssociationSet Name="FK_UserInfos_User" Association="SoccerStoreModel.FK_UserInfos_User">
-            <End Role="User" EntitySet="Users" />
+            <End Role="UserTB" EntitySet="UserTBs" />
             <End Role="UserInfo" EntitySet="UserInfos" />
           </AssociationSet>
         </EntityContainer>
@@ -380,15 +380,6 @@
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
-        <EntityType Name="User">
-          <Key>
-            <PropertyRef Name="Username" />
-          </Key>
-          <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Password" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Role" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="UserInfos" Relationship="SoccerStoreModel.FK_UserInfos_User" FromRole="User" ToRole="UserInfo" />
-        </EntityType>
         <EntityType Name="UserInfo">
           <Key>
             <PropertyRef Name="ID" />
@@ -397,7 +388,16 @@
           <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DiaChi" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="User" Relationship="SoccerStoreModel.FK_UserInfos_User" FromRole="UserInfo" ToRole="User" />
+          <NavigationProperty Name="UserTB" Relationship="SoccerStoreModel.FK_UserInfos_User" FromRole="UserInfo" ToRole="UserTB" />
+        </EntityType>
+        <EntityType Name="UserTB">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Role" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="UserInfos" Relationship="SoccerStoreModel.FK_UserInfos_User" FromRole="UserTB" ToRole="UserInfo" />
         </EntityType>
         <Association Name="FK_ChiTietMau_MauSac">
           <End Type="SoccerStoreModel.MauSac" Role="MauSac" Multiplicity="1" />
@@ -484,10 +484,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_UserInfos_User">
-          <End Type="SoccerStoreModel.User" Role="User" Multiplicity="1" />
+          <End Type="SoccerStoreModel.UserTB" Role="UserTB" Multiplicity="1" />
           <End Type="SoccerStoreModel.UserInfo" Role="UserInfo" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="User">
+            <Principal Role="UserTB">
               <PropertyRef Name="Username" />
             </Principal>
             <Dependent Role="UserInfo">
@@ -587,15 +587,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="SoccerStoreModel.User">
-              <MappingFragment StoreEntitySet="User">
-                <ScalarProperty Name="Role" ColumnName="Role" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Username" ColumnName="Username" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="UserInfos">
             <EntityTypeMapping TypeName="SoccerStoreModel.UserInfo">
               <MappingFragment StoreEntitySet="UserInfos">
@@ -603,6 +594,15 @@
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTBs">
+            <EntityTypeMapping TypeName="SoccerStoreModel.UserTB">
+              <MappingFragment StoreEntitySet="UserTB">
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

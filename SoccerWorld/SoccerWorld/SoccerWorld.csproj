@@ -129,6 +129,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\User\Controllers\HomeController.cs" />
+    <Compile Include="Areas\User\Tools\PassUtility.cs" />
     <Compile Include="Areas\User\UserAreaRegistration.cs" />
     <Compile Include="DAO\Produc.cs" />
     <Compile Include="Global.asax.cs">
@@ -176,10 +177,10 @@
     <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>SoccerWorld.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\User.cs">
+    <Compile Include="Models\UserInfo.cs">
       <DependentUpon>SoccerWorld.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\UserInfo.cs">
+    <Compile Include="Models\UserTB.cs">
       <DependentUpon>SoccerWorld.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -366,6 +367,9 @@
     <Content Include="Areas\User\Views\Home\GetSize.cshtml" />
     <Content Include="Areas\User\Views\Home\GetImg.cshtml" />
     <Content Include="Areas\User\Views\Home\GetCardInfo.cshtml" />
+    <Content Include="Areas\User\Views\Home\ListPageCategory.cshtml" />
+    <Content Include="Areas\User\Views\Home\Registry.cshtml" />
+    <Content Include="Areas\User\Views\Home\GetImgCard.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "Product";
+
+}
+@if (Session["UserName"] == null)
+{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+else if (Session["UserName"] != null)
+{
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+@model List<SoccerWorld.Models.SanPham>
+
+<div class="shoptop mt-4 mb-4">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Trang Chủ</a></li>
+            <li class="breadcrumb-item"><a href="shop.html">Shop</a></li>
+            <li class="breadcrumb-item"><a href="ao-bong-da.html">@ViewBag.PhanLoai</a></li>
+        </ol>
+    </nav>
+</div>
+<div class="container container-fluid">
+    <div class="row text-transform">
+        @if (Model != null)
+        {
+            foreach (var x in Model)
+            {
+                <div class="piccard col-sm-3 col-6 mb-4">
+                    <div class="card card-index">
+                        <div class="pic">
+                            <a href=@Url.Action("Product","Home", new { id = x.ID} )>
+                                <div class="carousel-inner">
+                                    @Html.Action("GetImg", new { id = x.ID })
+                                </div>
+                                <div class="buy">
+                                    <a href="#"><i class="fas fa-shopping-cart"></i> &nbsp; <span>Add to Cart</span> </a>
+                                </div>
+                                <div class="love">
+                                    <a href="#">
+                                        <i class="fas fa-heart" title="yêu thích"></i>
+                                    </a>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-text">@x.TenSanpham</div>
+                            <div class="price"><a href="">@x.Gia VND</a></div>
+                        </div>
+
+                    </div>
+                </div>
+
+            }
+
+
+        }
+        else
+        {
+            <div class="h3"> Xin lỗi không có mặt hàng nào cả</div>
+        }
+    </div>
+</div>

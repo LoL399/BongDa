@@ -5,7 +5,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using SoccerWorld.DAO;
-
+using System.Web.UI.WebControls;
+using SoccerWorld.Areas.User.Tools;
+using System.Web.UI;
 
 namespace SoccerWorld.Areas.User.Controllers
 {
@@ -15,25 +17,30 @@ namespace SoccerWorld.Areas.User.Controllers
         // GET: User/Home
         public ActionResult Index()
         {
+            if (TempData["Error"] != null)
+            {
+                ViewBag.Error = 123;
+                TempData.Remove("Error");
+            }
+           
             List<PhanLoai> phanloai = dbm.PhanLoais.ToList();
             List<PhanLoai> phanloai1 = new List<PhanLoai>();
             foreach (var x in phanloai)
             {
                 if (checkAvibility(x.IDPhanLoai))
                     phanloai1.Add(x);
-                
             }
             return View(phanloai1);
         }
-        public ActionResult GetCardInfo(int id)
+        public ActionResult GetCardInfo(int id,int no)
         {
-            List<SanPham> sp = dbm.SanPhams.Where(x => x.IDPhanLoai == id).Take(5).ToList();
+            List<SanPham> sp = dbm.SanPhams.Where(x => x.IDPhanLoai == id).Take(no).ToList();
             return PartialView(sp);
         }
         public ActionResult Category()
         {
-            List<PhanLoai> phanLoai = dbm.PhanLoais.ToList();
-            return PartialView("_Category", phanLoai);
+            List<PhanLoai> phanloai = dbm.PhanLoais.ToList();
+            return PartialView("_Category", phanloai);
         }
 
         public ActionResult Product(int id)
@@ -61,6 +68,12 @@ namespace SoccerWorld.Areas.User.Controllers
             List<HinhAnh> hinhanh = dbm.HinhAnhs.Where(x => x.IDSP == id).ToList();
             return PartialView(hinhanh);
         }
+        public ActionResult GetImgCard(int id)
+        {
+            List<HinhAnh> hinhanh = dbm.HinhAnhs.Where(x => x.IDSP == id).ToList();
+            return PartialView(hinhanh);
+        }
+
 
         public ActionResult GetMau(int id)
         {
@@ -76,6 +89,86 @@ namespace SoccerWorld.Areas.User.Controllers
         {
             return dbm.SanPhams.Any(x => x.IDPhanLoai == id);
             
+        }
+        public ActionResult ListPageCategory(int id)
+        {
+            List<SanPham> sp = dbm.SanPhams.Where(x => x.IDPhanLoai == id).ToList().ToList();
+            return View(sp);
+        }
+        [HttpGet]
+        public ActionResult Registry()
+        {
+            return View();
+        }       
+
+        [HttpPost]
+        public ActionResult Registry(string name, string pass, string email, string diachi )
+        {
+            if (Validate(pass,email,name)>0)
+            {
+                ViewBag.Error = Validate(pass, email, name);
+                return View();
+            }
+            RegistNew(name, pass, email, diachi);
+            //Response.Write("<script>alert('Đăng ký thành công. Mời đăng nhập');</script>");
+            return RedirectToAction("Index","Home");
+        }
+        [HttpGet]
+        public ActionResult Login()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Login(string name, string pass)
+        {
+            if (dbm.UserTBs.Any(x => x.Username == name))
+            {
+                var check = dbm.UserTBs.Where(x => x.Username == name).FirstOrDefault();
+                if (check.Password == PassUtility.MD5Hash(pass))
+                {
+                    Session["UserName"] = check.Username;
+                    return RedirectToAction("Index", "Home") ;
+                }
+            }
+            TempData["Error"] = 1;
+            return RedirectToAction("Index", "Home") ;
+        }
+        public ActionResult Logout()
+        {
+            Session.Remove("UserName");
+            return RedirectToAction("Index", "Home");
+        }
+
+
+        private void RegistNew(string name, string pass, string email, string diachi)
+        {
+            UserTB newuser = new UserTB();
+            newuser.Username = name;
+            newuser.Password = PassUtility.MD5Hash(pass);
+            dbm.UserTBs.Add(newuser);
+            UserInfo info = new UserInfo();
+            info.Username = name;
+            info.Email = email;
+            info.DiaChi = diachi;
+            dbm.UserInfos.Add(info);
+            dbm.SaveChanges();
+        }
+        private int Validate(string pass, string email,string name)
+        {
+            if (!PassUtility.ValidatePass(pass))
+            {
+                return 1;
+            }
+            if (!email.Contains("@"))
+            {
+                return 2;
+            }
+            if (dbm.UserTBs.Any(x => x.Username == name))
+            {
+                return 3;
+            }
+            return 0;
+
         }
     }
 }
