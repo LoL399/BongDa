@@ -1,7 +1,16 @@
 ﻿@model List<SoccerWorld.Models.MauSac>
 
 
-@foreach (var i in Model)
+
+@if (Model.Count<1)
 {
-    <option value="@i.IDMau">@i.TenMau</option>
+    <option value="0">Không có màu</option>
 }
+else
+{
+    foreach (var i in Model)
+    {
+        <option value="@i.IDMau" name="mau">@i.TenMau</option>
+    }
+}
+

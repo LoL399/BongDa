@@ -170,5 +170,52 @@ namespace SoccerWorld.Areas.User.Controllers
             return 0;
 
         }
+        public ActionResult AddCart(int id, string kc, int mau)
+        {
+
+            List<DetailCarts> a = (List<DetailCarts>)Session["Cart"];
+            if (a == null)
+            {
+                a = new List<DetailCarts>();
+                Carts carts = new Carts(1, id, mau, kc);
+                DetailCarts detail = makeCart(carts, 1);
+                a.Add(detail);
+            }
+            else
+            {
+
+                Carts carts = new Carts(a.Count() + 1, id, mau, kc);
+                var checkin = a.Where(x => x.product.Sp == id).FirstOrDefault();
+                if (checkin != null)
+                {
+                    foreach (var x in a)
+                    {
+                        if (x.product.ID == checkin.product.ID)
+                        {
+                            x.quantity++;
+                            break;
+                        }
+                    }
+
+                }
+                else
+                {
+                    DetailCarts detail = makeCart(carts, 1);
+                    a.Add(detail);
+                }
+
+
+            }
+            Session["Cart"] = a;
+            return View(a);
+        }
+
+        public DetailCarts makeCart(Carts cart, int i)
+        {
+            DetailCarts dc = new DetailCarts();
+            dc.product = cart;
+            dc.quantity = 1;
+            return dc;
+        }
     }
 }

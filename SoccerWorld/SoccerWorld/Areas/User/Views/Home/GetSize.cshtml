@@ -1,6 +1,18 @@
 ﻿@model List<SoccerWorld.Models.Kichco>
 
-@foreach (var i in Model)
+@if (Model.Count()<1)
 {
-    <option value="@i.IDKichCo ">@i.Mota</option>
+    <option value="0">Không có cỡ</option>
 }
+else
+{
+    foreach (var i in Model)
+    {
+        <option value="@i.IDKichCo">@i.Mota</option>
+    }
+}
+
+
+
+
+

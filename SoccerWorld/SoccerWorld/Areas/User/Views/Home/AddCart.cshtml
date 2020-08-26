@@ -1,0 +1,9 @@
+﻿
+@model List<SoccerWorld.Models.DetailCarts>
+
+@foreach (var x in Model)
+{
+    <h1>@x.product.ID</h1>
+    <h1>@x.product.Sp</h1>
+    <h1>@x.quantity</h1>
+}

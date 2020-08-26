@@ -135,12 +135,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Carts.cs" />
     <Compile Include="Models\ChiTietMau.cs">
       <DependentUpon>SoccerWorld.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CTKichCo.cs">
       <DependentUpon>SoccerWorld.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DetailCarts.cs" />
     <Compile Include="Models\HinhAnh.cs">
       <DependentUpon>SoccerWorld.tt</DependentUpon>
     </Compile>
@@ -370,6 +372,7 @@
     <Content Include="Areas\User\Views\Home\ListPageCategory.cshtml" />
     <Content Include="Areas\User\Views\Home\Registry.cshtml" />
     <Content Include="Areas\User\Views\Home\GetImgCard.cshtml" />
+    <Content Include="Areas\User\Views\Home\AddCart.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
