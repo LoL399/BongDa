@@ -21,7 +21,7 @@
 <body>
     <!-- header  top-->
     <div class="mess">
-        <a href="https://www.messenger.com/t/kun.nhok.338" title="Liên hệ với chúng tôi" target="-blank">
+        <a href="#" title="Liên hệ với chúng tôi" target="-blank">
             <i class="fab fa-facebook-messenger"></i>
         </a>
     </div>
@@ -56,7 +56,7 @@
         <div class="header-content-mid">
             <!-- nav -->
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="@Url.Action("Index","Home")">
                     <img src="https://shopbongda.vn/wp-content/uploads/2019/06/logo-lhsport-website.png" alt="">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -73,69 +73,19 @@
                                 Phân loại
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                @Html.Action("Category","Home")
+                                @Html.Action("Category", "Home")
                             </div>
-                                
+
                         </li>
-                        
+
                         <li class="nav-item">
                             <a class="nav-link" href="connect.html">Liên Hệ</a>
                         </li>
                         <li class="nav-item" id="nav-item-user">
                             <i class="fas fa-user" data-toggle="modal" data-target="#exampleModal"></i>
-
-                            <!-- Modal -->
-                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                                 aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Đăng Nhập</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        @using (Html.BeginForm("Login", "Home"))
-                                        {
-                                            @Html.AntiForgeryToken()
-                                    <div class="modal-body">
-
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text" id="basic-addon1">Tài Khoản</span>
-                                            </div>
-                                            <input type="text" name="name" class="form-control" placeholder="Username"
-                                                   aria-label="Username" aria-describedby="basic-addon1">
-                                        </div>
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text" id="basic-addon1">Mật Khẩu</span>
-                                            </div>
-                                            <input type="password" name="pass" class="form-control" placeholder="Password"
-                                                   aria-label="Password" aria-describedby="basic-addon1">
-                                        </div>
-                                        @if (ViewBag.Error==123)
-                                        {
-
-                                            <div class="input-group mb-3">
-                                                <p class="text-danger">Tên đăng nhập hoặc mật khẩu bị sai</p>
-                                            </div>
-                                        }
-
-                                    </div>
-                                            <div class="modal-footer d-flex justify-content-start ">
-                                                <button type="submit" class="btn btn-primary" id="login">Đăng Nhập</button>
-                                                <div class="bonus">
-                                                    <a href="" id="forget-pw">Quên Mật Khẩu?</a> <a href="@Url.Action("Registry","Home")" id="register-user">Đăng kí Tài Khoản </a>
-                                                </div>
-                                            </div>
-                                        }
-
-                                    </div>
-                                </div>
-                            </div>
+                        <li class="nav-item" id="nav-item-user">
+                            <i class="fas fa-shopping-cart text-danger" data-toggle="modal" data-target="#CartModal"></i>@Html.Action("CountCart","Home")
                         </li>
-
 
                     </ul>
 
@@ -269,7 +219,83 @@
         </div>
     </footer>
 
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Đăng Nhập</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                @using (Html.BeginForm("Login", "Home"))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="modal-body">
 
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">Tài Khoản</span>
+                            </div>
+                            <input type="text" name="name" class="form-control" placeholder="Username"
+                                   aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">Mật Khẩu</span>
+                            </div>
+                            <input type="password" name="pass" class="form-control" placeholder="Password"
+                                   aria-label="Password" aria-describedby="basic-addon1">
+                        </div>
+                        @if (ViewBag.Error == 123)
+                        {
+
+                            <div class="input-group mb-3">
+                                <p class="text-danger">Tên đăng nhập hoặc mật khẩu bị sai</p>
+                            </div>
+                        }
+
+                    </div>
+                    <div class="modal-footer d-flex justify-content-start ">
+                        <button type="submit" class="btn btn-primary" id="login">Đăng Nhập</button>
+                        <div class="bonus">
+                            <a href="" id="forget-pw">Quên Mật Khẩu?</a> <a href="@Url.Action("Registry","Home")" id="register-user">Đăng kí Tài Khoản </a>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+    <div class="modal fade bd-example-modal-lg" id="CartModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg ">
+            <div class="modal-content">
+                <div class="modal-header bg-danger">
+                    <div class="modal-title h5 text-justify text-white" id="exampleModalLabel">Giỏ Hàng</div>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    @if (Session["Cart"] != null)
+                    {
+                        @Html.Action("showCart", "Home")
+                    }
+                    else
+                    {
+                        <div class="h3"> Giỏ hàng trống </div>
+                    }
+
+
+                </div>
+            </div>
+            <div class="modal-footer d-flex justify-content-start ">
+
+            </div>
+        </div>
+        </div>
 
     <script src="~/content/src/js/jquery-3.5.1.min.js"></script>
     <script src="~/content/src/boostrap/bootstrap.bundle.min.js"></script>

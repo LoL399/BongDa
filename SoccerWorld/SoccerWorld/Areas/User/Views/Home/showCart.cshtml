@@ -1,0 +1,59 @@
+﻿
+@model List<SoccerWorld.Models.DetailCarts>
+
+
+
+
+        <div class="row">
+
+            <div class="col-sm-12 col-12">
+                <table class="table table-hover ">
+                    <thead>
+                        <tr>
+                            <th scope="col">Sản Phẩm</th>
+                            <th scope="col">Giá </th>
+                            <th scope="col">Kích cỡ</th>
+                            <th scope="col">Màu</th>
+                            <th scope="col" style="width:8rem">Số Lượng</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var x in Model)
+                        {
+                        <tr>
+                            <th>
+                                <div class="row">
+                                    <div class="col-3">
+                                        @Html.Action("GetImgCard", new { id = x.product.Sp.ID })
+                                    </div>
+                                    <div class="col-9">
+                                        <p>@x.product.Sp.TenSanpham</p>
+                                    </div>
+                                </div>
+                            </th>
+                            <th>
+                                @x.product.Sp.Gia VND
+                            </th>
+                            <th>@x.product.Kc.Mota</th>
+                            <th>@x.product.Ms.TenMau</th>
+                            <th>@x.quantity</th>
+
+                        </tr>
+                            
+                        }
+
+
+                    </tbody>
+                </table>
+                <div class="d-flex justify-content-center mt-5 mb-5">
+                    <a href="#">
+                        <div class="btn btn-danger">Thanh Toán</div>
+                    </a>
+                    <a href="@Url.Action("EditCarts","Home")">
+                        <div class="btn btn-warning text-white ml-3">Chỉnh sửa</div>
+                    </a>
+                </div>
+
+            </div>
+
+        </div>

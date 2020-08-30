@@ -9,5 +9,7 @@ namespace SoccerWorld.Models
     {
         public Carts product { get; set; }
         public int quantity { get; set; }
+
+        public void Stop() { }
     }
 }

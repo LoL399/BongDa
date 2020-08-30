@@ -8,11 +8,10 @@ namespace SoccerWorld.Models
     public class Carts
     {
         private int id;
-        private int sp;
-        private int ms;
-        private string kc;
-
-        public Carts(int id, int sp, int ms, string kc)
+        private SanPham sp;
+        private MauSac ms;
+        private Kichco kc;
+        public Carts(int id,  SanPham sp, MauSac ms, Kichco kc)
         {
             this.id = id;
             this.sp = sp;
@@ -20,8 +19,8 @@ namespace SoccerWorld.Models
             this.kc = kc;
         }
         public int ID { get { return id; } set {id = value; } }
-        public int Sp { get {return sp; } set { sp = value; } }
-        public int Ms { get {return ms; } set {ms=value; } }
-        public string Kc { get { return kc; } set {kc=value; } }
+        public SanPham Sp { get {return sp; } set { sp = value; } }
+        public MauSac Ms { get {return ms; } set {ms=value; } }
+        public Kichco Kc { get { return kc; } set {kc=value; } }
     }
 }

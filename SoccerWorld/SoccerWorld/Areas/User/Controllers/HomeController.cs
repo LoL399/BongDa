@@ -8,12 +8,15 @@ using SoccerWorld.DAO;
 using System.Web.UI.WebControls;
 using SoccerWorld.Areas.User.Tools;
 using System.Web.UI;
+using System.Net;
 
 namespace SoccerWorld.Areas.User.Controllers
 {
     public class HomeController : Controller
     {
-        SoccerStoreEntities dbm = new SoccerStoreEntities();
+        Produc db = new Produc();
+
+
         // GET: User/Home
         public ActionResult Index()
         {
@@ -22,96 +25,72 @@ namespace SoccerWorld.Areas.User.Controllers
                 ViewBag.Error = 123;
                 TempData.Remove("Error");
             }
-           
-            List<PhanLoai> phanloai = dbm.PhanLoais.ToList();
-            List<PhanLoai> phanloai1 = new List<PhanLoai>();
-            foreach (var x in phanloai)
-            {
-                if (checkAvibility(x.IDPhanLoai))
-                    phanloai1.Add(x);
-            }
-            return View(phanloai1);
+
+
+            return View(db.GetCategoryNotEmpty());
         }
-        public ActionResult GetCardInfo(int id,int no)
+        public ActionResult GetCardInfo(int id, int no)
         {
-            List<SanPham> sp = dbm.SanPhams.Where(x => x.IDPhanLoai == id).Take(no).ToList();
-            return PartialView(sp);
+            return PartialView(db.GetCardInfo(id, no));
         }
         public ActionResult Category()
         {
-            List<PhanLoai> phanloai = dbm.PhanLoais.ToList();
-            return PartialView("_Category", phanloai);
+
+            return PartialView("_Category", db.GetCategory());
         }
 
         public ActionResult Product(int id)
         {
-            SanPham sp = new SanPham();
-            sp = dbm.SanPhams.Where(x => x.ID.ToString() == id.ToString()).FirstOrDefault();
-            var phanloai = dbm.PhanLoais.FirstOrDefault(x => x.IDPhanLoai == sp.IDPhanLoai);
-            
-            
+            SanPham sp = db.GetProduct(id);
+            var phanloai = db.GetOneCategory(sp.IDPhanLoai);
+            ViewBag.IDPL = phanloai.IDPhanLoai;
             ViewBag.PhanLoai = phanloai.TenPhanLoai.ToString();
             return View(sp);
         }
         public ActionResult GetSize(int id)
         {
-            List<CTKichCo> lstkichco = dbm.CTKichCoes.Where(x => x.IDSP == id && x.TinhTrang == true).ToList();
-            List<Kichco> kichco = new List<Kichco>();
-            foreach (var x in lstkichco)
-            {
-                kichco.Add(dbm.Kichcoes.Where(o => o.IDKichCo == x.IDKC).FirstOrDefault());
-            }
-            return PartialView(kichco);
+
+            return PartialView(db.GetListSize(id));
         }
         public ActionResult GetImg(int id)
         {
-            List<HinhAnh> hinhanh = dbm.HinhAnhs.Where(x => x.IDSP == id).ToList();
-            return PartialView(hinhanh);
+            return PartialView(db.GetImg(id));
         }
         public ActionResult GetImgCard(int id)
         {
-            List<HinhAnh> hinhanh = dbm.HinhAnhs.Where(x => x.IDSP == id).ToList();
-            return PartialView(hinhanh);
+            return PartialView(db.GetImg(id));
         }
 
 
         public ActionResult GetMau(int id)
         {
-            List<ChiTietMau> lstmau = dbm.ChiTietMaus.Where(x => x.IDSP == id).ToList();
-            List<MauSac> mau = new List<MauSac>();
-            foreach (var x in lstmau)
-            {
-                mau.Add(dbm.MauSacs.Where(o => o.IDMau == x.IDMau).FirstOrDefault());
-            }
-            return PartialView(mau);
+
+            return PartialView(db.GetListColor(id));
         }
-        public bool checkAvibility(int id)
-        {
-            return dbm.SanPhams.Any(x => x.IDPhanLoai == id);
-            
-        }
+
         public ActionResult ListPageCategory(int id)
         {
-            List<SanPham> sp = dbm.SanPhams.Where(x => x.IDPhanLoai == id).ToList().ToList();
-            return View(sp);
+            return View(db.GetListSP(id));
         }
         [HttpGet]
         public ActionResult Registry()
         {
             return View();
-        }       
+        }
 
         [HttpPost]
-        public ActionResult Registry(string name, string pass, string email, string diachi )
+        public ActionResult Registry(string name, string pass, string email, string diachi)
         {
-            if (Validate(pass,email,name)>0)
+            UserDB udb = new UserDB();
+            int val = udb.Validate(pass, email, name);
+            if (val > 0)
             {
-                ViewBag.Error = Validate(pass, email, name);
+                ViewBag.Error = val;
                 return View();
             }
-            RegistNew(name, pass, email, diachi);
+            udb.RegistNew(name, pass, email, diachi);
             //Response.Write("<script>alert('Đăng ký thành công. Mời đăng nhập');</script>");
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("Index", "Home");
         }
         [HttpGet]
         public ActionResult Login()
@@ -121,17 +100,16 @@ namespace SoccerWorld.Areas.User.Controllers
         [HttpPost]
         public ActionResult Login(string name, string pass)
         {
-            if (dbm.UserTBs.Any(x => x.Username == name))
+            UserDB udb = new UserDB();
+            if (udb.checkSignin(name, pass))
             {
-                var check = dbm.UserTBs.Where(x => x.Username == name).FirstOrDefault();
-                if (check.Password == PassUtility.MD5Hash(pass))
-                {
-                    Session["UserName"] = check.Username;
-                    return RedirectToAction("Index", "Home") ;
-                }
+                Session["UserName"] = name;
+                return RedirectToAction("Index", "Home");
             }
+
+
             TempData["Error"] = 1;
-            return RedirectToAction("Index", "Home") ;
+            return RedirectToAction("Index", "Home");
         }
         public ActionResult Logout()
         {
@@ -139,53 +117,26 @@ namespace SoccerWorld.Areas.User.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-
-        private void RegistNew(string name, string pass, string email, string diachi)
-        {
-            UserTB newuser = new UserTB();
-            newuser.Username = name;
-            newuser.Password = PassUtility.MD5Hash(pass);
-            dbm.UserTBs.Add(newuser);
-            UserInfo info = new UserInfo();
-            info.Username = name;
-            info.Email = email;
-            info.DiaChi = diachi;
-            dbm.UserInfos.Add(info);
-            dbm.SaveChanges();
-        }
-        private int Validate(string pass, string email,string name)
-        {
-            if (!PassUtility.ValidatePass(pass))
-            {
-                return 1;
-            }
-            if (!email.Contains("@"))
-            {
-                return 2;
-            }
-            if (dbm.UserTBs.Any(x => x.Username == name))
-            {
-                return 3;
-            }
-            return 0;
-
-        }
-        public ActionResult AddCart(int id, string kc, int mau)
+        [HttpPost]
+        public ActionResult Product(int id, int kc, int mau)
         {
 
             List<DetailCarts> a = (List<DetailCarts>)Session["Cart"];
+            var sp = db.GetProduct(id);
+            var mausac = db.GetColor(mau);
+            var kichco = db.GetSize(kc);
             if (a == null)
             {
                 a = new List<DetailCarts>();
-                Carts carts = new Carts(1, id, mau, kc);
+                Carts carts = new Carts(1, sp, mausac, kichco);
                 DetailCarts detail = makeCart(carts, 1);
                 a.Add(detail);
             }
             else
             {
 
-                Carts carts = new Carts(a.Count() + 1, id, mau, kc);
-                var checkin = a.Where(x => x.product.Sp == id).FirstOrDefault();
+                Carts carts = new Carts(a.Count() + 1, sp, mausac, kichco);
+                var checkin = a.Where(x => x.product.Sp.ID == id && x.product.Kc.IDKichCo == kc && x.product.Ms.IDMau == mau).FirstOrDefault();
                 if (checkin != null)
                 {
                     foreach (var x in a)
@@ -201,15 +152,38 @@ namespace SoccerWorld.Areas.User.Controllers
                 else
                 {
                     DetailCarts detail = makeCart(carts, 1);
+
                     a.Add(detail);
                 }
 
 
             }
             Session["Cart"] = a;
-            return View(a);
+            ViewBag.Toast = 1;
+            var phanloai = db.GetOneCategory(sp.IDPhanLoai);
+            ViewBag.IDPL = phanloai.IDPhanLoai;
+            ViewBag.PhanLoai = phanloai.TenPhanLoai.ToString();
+            return View(sp);
         }
+        public ActionResult showCart()
+        {
+            List<DetailCarts> a = (List<DetailCarts>)Session["Cart"];
+            return PartialView(a);
+        }
+        public ActionResult CountCart()
+        {
 
+            if (Session["Cart"] == null)
+            {
+                ViewBag.count = 0;
+            }
+            else
+            {
+                List<DetailCarts> a = (List<DetailCarts>)Session["Cart"];
+                ViewBag.count = a.Count();
+            }
+            return PartialView();
+        }
         public DetailCarts makeCart(Carts cart, int i)
         {
             DetailCarts dc = new DetailCarts();
@@ -217,5 +191,17 @@ namespace SoccerWorld.Areas.User.Controllers
             dc.quantity = 1;
             return dc;
         }
+        public ActionResult EditCarts() {
+            List<DetailCarts> a = (List<DetailCarts>)Session["Cart"];
+            return View(a);
+        }
+        public ActionResult RemoveItem(int id)
+        {
+            List<DetailCarts> a = (List<DetailCarts>)Session["Cart"];
+            a.RemoveAll(x=>x.product.ID==id);
+            return RedirectToAction("EditCarts");
+
+        }
+        
     }
 }

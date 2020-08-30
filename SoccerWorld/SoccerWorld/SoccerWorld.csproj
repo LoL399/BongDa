@@ -132,6 +132,7 @@
     <Compile Include="Areas\User\Tools\PassUtility.cs" />
     <Compile Include="Areas\User\UserAreaRegistration.cs" />
     <Compile Include="DAO\Produc.cs" />
+    <Compile Include="DAO\UserDB.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -373,6 +374,9 @@
     <Content Include="Areas\User\Views\Home\Registry.cshtml" />
     <Content Include="Areas\User\Views\Home\GetImgCard.cshtml" />
     <Content Include="Areas\User\Views\Home\AddCart.cshtml" />
+    <Content Include="Areas\User\Views\Home\showCart.cshtml" />
+    <Content Include="Areas\User\Views\Home\EditCarts.cshtml" />
+    <Content Include="Areas\User\Views\Home\CountCart.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
